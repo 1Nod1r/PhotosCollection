@@ -9,7 +9,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    let sectionTitles: [String] = ["Photo of Sun","Photo of Programmers" ,"Photo of basketball players",  "Swimming"]
+    let sectionTitles: [String] = ["Photo of New York","Photo of Programmers" ,"Photo of basketball players",  "Swimming"]
     
     private var photos: [Results] = [Results]()
     
@@ -50,7 +50,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            APICaller.shared.getPhotos(query: "sun"){[weak self] result in
+            APICaller.shared.getPhotos(query: "New York"){[weak self] result in
                 switch result{
                 case .success(let photos):
                         self?.photos = photos

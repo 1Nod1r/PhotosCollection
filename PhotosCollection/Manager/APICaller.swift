@@ -21,7 +21,7 @@ final class APICaller {
     static let shared = APICaller()
     
     func getPhotos(query: String, completion: @escaping (Result<[Results], Error>)->Void){
-        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         guard let url = URL(string: "\(Constants.baseURL)\(query)") else { return }
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data,
